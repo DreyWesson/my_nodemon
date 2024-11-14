@@ -1,6 +1,6 @@
 {
-  "name": "your-nodemon-package",
-  "version": "1.0.0",
+  "name": "my-nodemon",
+  "version": "1.0.1",
   "description": "A custom Nodemon implementation",
   "main": "nodemon.js",
   "bin": {
