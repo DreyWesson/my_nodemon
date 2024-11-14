@@ -1,0 +1,18 @@
+{
+  "name": "your-nodemon-package",
+  "version": "1.0.0",
+  "description": "A custom Nodemon implementation",
+  "main": "nodemon.js",
+  "bin": {
+    "nodemon": "./nodemon.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["nodemon", "file watcher"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.5.3"
+  }
+}
