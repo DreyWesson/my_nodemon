@@ -40,7 +40,10 @@ class Nodemon {
 
     watcher
       .on("all", (event, path) => {
-        if (!options.type || event.toLowerCase() === options.type.toLowerCase()) {
+        if (
+          !options.type ||
+          event.toLowerCase() === options.type.toLowerCase()
+        ) {
           const eventType = event.charAt(0).toUpperCase() + event.slice(1);
           debouncedCallback(
             `${COLORS.MAGENTA}${eventType} detected${COLORS.RESET}: ${path}`
@@ -59,13 +62,17 @@ class Nodemon {
     const startChildProcess = () => {
       if (childProcess) {
         childProcess.kill();
-        console.log(`${COLORS.CYAN}Restarting your application...${COLORS.RESET}`);
+        console.log(
+          `${COLORS.CYAN}Restarting your application...${COLORS.RESET}`
+        );
       } else if (isInitialStart) {
         console.log("Starting application...");
         isInitialStart = false;
       }
 
-      const fullEntryPath = path.join(watchDir, entryFile);
+      const fullEntryPath = path.isAbsolute(entryFile)
+        ? entryFile
+        : path.resolve(process.cwd(), entryFile);
 
       childProcess = spawn("node", [fullEntryPath], { stdio: "inherit" });
       childProcess.on("close", (code) => {
